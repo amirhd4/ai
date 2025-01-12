@@ -18,6 +18,8 @@ fig = plt.figure()
 pic1 = fig.add_subplot(111)
 
 regr = linear_model.LinearRegression()
+# Multi Linear Regression
+# train_x = np.asanyarray(train[["YEAR", "OTHER_COLUMN1", "OTHER_COLUMN2"]])
 train_x = np.asanyarray(train[["YEAR"]])
 train_y = np.asanyarray(train[["PRICE"]])
 regr.fit(train_x, train_y)
@@ -30,6 +32,8 @@ plt.plot(train_x, regr.coef_ * train_x + regr.intercept_, color="red")
 plt.xlabel("Year")
 plt.ylabel("Price")
 
+# Multi Linear Regression
+# test_x = np.asanyarray(test[["YEAR", "OTHER_COLUMN1", "OTHER_COLUMN2"]])
 test_x = np.asanyarray(test[["YEAR"]])
 test_y = np.asanyarray(test[["PRICE"]])
 test_y_ = regr.predict(test_x)
@@ -38,3 +42,5 @@ ys = np.array([[1404], [1405]])
 res = regr.predict(np.asanyarray(ys))
 print(res)
 # print("score: ", r2_score(test_y, test_y_))
+# Multi Linear Regression
+# print("score: ", regr.score(test_x, test_y))
