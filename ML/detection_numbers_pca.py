@@ -24,6 +24,13 @@ scaler = MinMaxScaler(feature_range=(0, 1))
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.transform(x_test)
 
+# PCA
+from sklearn.decomposition import PCA
+
+pca = PCA(n_components=32)
+x_train = pca.fit_transform(x_train)
+x_test = pca.transform(x_test)
+
 
 # Performance metric
 def calculate_metrics(y_tr, y_te, y_pr_tr, y_pr_te):
@@ -87,19 +94,19 @@ accuracy_train = [acc_train_knn, acc_train_rf, acc_train_svm, acc_train_ann]
 title = ["KNN", "RF", "SVM", "ANN"]
 colors = ["black", "red", "yellow", "orange"]
 
-# plt.bar(title, accuracy_train, color=colors)
-# plt.grid()
-# plt.show()
+plt.bar(title, accuracy_train, color=colors)
+plt.grid()
+plt.show()
 
-# accuracy_test = [acc_test_knn, acc_test_rf, acc_test_svm, acc_test_ann]
-# plt.bar(title, accuracy_test, color=colors)
-# plt.grid()
-# plt.show()
+accuracy_test = [acc_test_knn, acc_test_rf, acc_test_svm, acc_test_ann]
+plt.bar(title, accuracy_test, color=colors)
+plt.grid()
+plt.show()
 
-# p = [p_knn, p_rf, p_svm, p_ann]
-# plt.bar(title, p, color=colors)
-# plt.grid()
-# plt.show()
+p = [p_knn, p_rf, p_svm, p_ann]
+plt.bar(title, p, color=colors)
+plt.grid()
+plt.show()
 
 r = [r_knn, r_rf, r_svm, r_ann]
 plt.bar(title, r, color=colors)
