@@ -41,7 +41,7 @@ gnb.fit(x_train, y_train)
 y_pred_tr = gnb.predict(x_train)
 y_pred_te = gnb.predict(x_test)
 
-# acc_train_nb, acc_test_nb, prec_nb, rec_nb = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
+acc_train_nb, acc_test_nb, prec_nb, rec_nb = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
 
 # 2. KNN
 from sklearn.neighbors import KNeighborsClassifier
@@ -52,7 +52,7 @@ knn.fit(x_train, y_train)
 y_pred_tr = knn.predict(x_train)
 y_pred_te = knn.predict(x_test)
 
-# acc_train_knn, acc_test_knn, prec_knn, rec_knn = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
+acc_train_knn, acc_test_knn, prec_knn, rec_knn = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
 
 # 3. Decision Tree
 from sklearn.tree import DecisionTreeClassifier
@@ -63,7 +63,7 @@ dt.fit(x_train, y_train)
 y_pred_tr = dt.predict(x_train)
 y_pred_te = dt.predict(x_test)
 
-# acc_train_dt, acc_test_dt, prec_dt, rec_dt = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
+acc_train_dt, acc_test_dt, prec_dt, rec_dt = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
 
 # 4. Random Forest
 from sklearn.ensemble import RandomForestClassifier
@@ -74,7 +74,7 @@ rf.fit(x_train, y_train)
 y_pred_tr = rf.predict(x_train)
 y_pred_te = rf.predict(x_test)
 
-# acc_train_rf, acc_test_rf, prec_rf, rec_rf = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
+acc_train_rf, acc_test_rf, prec_rf, rec_rf = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
 
 # 5. SVM
 from sklearn.svm import SVC
@@ -85,7 +85,7 @@ svm.fit(x_train, y_train)
 y_pred_tr = svm.predict(x_train)
 y_pred_te = svm.predict(x_test)
 
-# acc_train_svm, acc_test_svm, prec_svm, rec_svm = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
+acc_train_svm, acc_test_svm, prec_svm, rec_svm = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
 
 # 6. Logistic Regression
 from sklearn.linear_model import LogisticRegression
@@ -96,7 +96,7 @@ lr.fit(x_train, y_train)
 y_pred_tr = lr.predict(x_train)
 y_pred_te = lr.predict(x_test)
 
-# acc_train_lr, acc_test_lr, prec_lr, rec_lr = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
+acc_train_lr, acc_test_lr, prec_lr, rec_lr = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
 
 # 7. ANN
 from sklearn.neural_network import MLPClassifier
@@ -109,3 +109,29 @@ y_pred_tr = ann.predict(x_train)
 y_pred_te = ann.predict(x_test)
 
 acc_train_ann, acc_test_ann, prec_ann, rec_ann = calculate_metrics(y_train, y_test, y_pred_tr, y_pred_te)
+
+# Comparison
+import matplotlib.pyplot as plt
+
+accuracy_train = [acc_train_nb, acc_train_knn, acc_train_dt, acc_train_rf, acc_train_svm, acc_train_lr, acc_train_ann]
+title = ["GNB", "KNN", "DT", "RF", "SVM", "LR", "ANN"]
+
+colors = ["black", "red", "yellow", "orange", "green", "blue", "purple", "pink"]
+# plt.bar(title, accuracy_train, color=colors)
+# plt.grid()
+# plt.show()
+
+# accuracy_test = [acc_test_nb, acc_test_knn, acc_test_dt, acc_test_rf, acc_test_svm, acc_test_lr, acc_test_ann]
+# plt.bar(title, accuracy_test, color=colors)
+# plt.grid()
+# plt.show()
+
+# prec = [prec_nb, prec_knn, prec_dt, prec_rf, prec_svm, prec_lr, prec_ann]
+# plt.bar(title, prec, color=colors)
+# plt.grid()
+# plt.show()
+
+rec = [rec_nb, rec_knn, rec_dt, rec_rf, rec_svm, rec_lr, rec_ann]
+plt.bar(title, rec, color=colors)
+plt.grid()
+plt.show()
