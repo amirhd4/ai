@@ -26,10 +26,10 @@ def calculate_metrics(y_tr, y_te, y_pr_tr, y_pr_te):
 
     acc_test = accuracy_score(y_true=y_te, y_pred=y_pr_te)
     prec = precision_score(y_true=y_te, y_pred=y_pr_te)
-    rec = recall_score(y_true=y_te, y_pred=y_pr_te)
+    re = recall_score(y_true=y_te, y_pred=y_pr_te)
 
     print(f"acc train: {acc_train} - acc test: {acc_test} - precision: {prec} - recall: {rec}")
-    return acc_train, acc_test, prec, rec
+    return acc_train, acc_test, prec, re
 
 
 # 1. Naive bayes
